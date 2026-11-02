@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Harsh Chaudhary · Trace</title>
+  <meta name="description" content="Harsh Chaudhary — engineer building security, observability and AI products. Portfolio as a distributed trace.">
+  <meta name="theme-color" content="#0a0e13">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Bricolage+Grotesque:opsz,wght@12..96,700&family=Figtree:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="../shared/base.css">
+  <link rel="stylesheet" href="trace.css">
+</head>
+<body>
+  <div class="wrap">
+    <header class="intro" id="intro"></header>
+
+    <section class="stage" aria-label="Work as a trace">
+      <div class="bar">
+        <div class="title"><span class="method">GET</span>/harsh <span class="rec" id="rec">● REC</span><span class="meta" id="meta"></span></div>
+        <div class="seg" role="group" aria-label="Group spans">
+          <button type="button" class="chip" id="by-layer" aria-pressed="true">by layer</button>
+          <button type="button" class="chip" id="by-role" aria-pressed="false">by role</button>
+          <button type="button" class="chip" id="replay" aria-label="Replay the trace">↻</button>
+        </div>
+      </div>
+      <div class="body">
+        <div class="chart"><div class="grid" id="grid"></div></div>
+        <aside class="panel" id="panel" aria-live="polite"></aside>
+      </div>
+      <div class="trace-foot"><span id="perf">page trace: measuring…</span><span>spans: <b id="count">0</b></span><span>errors: 0</span><span class="hint">hover the timeline to scrub through time</span></div>
+    </section>
+
+    <footer class="foot"><span>bars show when each piece of work was active · content from my resume · no framework, no tracking</span></footer>
+  </div>
+
+  <script src="../shared/data.js"></script>
+  <script src="../shared/common.js"></script>
+  <script src="trace.js"></script>
+</body>
+</html>

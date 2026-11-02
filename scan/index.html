@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Harsh Chaudhary · Discovery Scan</title>
+  <meta name="description" content="Harsh Chaudhary — engineer building security, observability and AI products. Portfolio as a discovery scan.">
+  <meta name="theme-color" content="#0a0e13">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Bricolage+Grotesque:opsz,wght@12..96,700&family=Figtree:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="../shared/base.css">
+  <link rel="stylesheet" href="scan.css">
+</head>
+<body>
+  <div class="wrap">
+    <header class="intro" id="intro"></header>
+
+    <section class="stage" aria-label="Discovered work">
+      <div class="progress"><span id="progress"></span></div>
+      <div class="bar">
+        <div class="title"><span class="method" id="state">SCANNING</span>harsh <span class="meta" id="meta"></span></div>
+        <div class="stats" id="stats"></div>
+      </div>
+      <div class="console" id="console">
+        <div class="log" id="log" aria-live="polite"></div>
+        <form class="prompt" id="prompt" autocomplete="off" hidden>
+          <label for="cmd">harsh@scan:~$</label>
+          <input id="cmd" spellcheck="false" placeholder="type help">
+        </form>
+      </div>
+      <div class="filters" id="filters"></div>
+      <div class="sevbar" id="sevbar"></div>
+      <div class="body">
+        <div class="table">
+          <table>
+            <thead><tr><th>ID</th><th>Asset</th><th>Type</th><th>Impact</th><th>Status</th></tr></thead>
+            <tbody id="rows"></tbody>
+          </table>
+        </div>
+        <aside class="panel" id="panel" aria-live="polite"></aside>
+      </div>
+    </section>
+
+    <footer class="foot"><span id="perf"></span><span>content from my resume · no framework, no tracking</span></footer>
+  </div>
+
+  <script src="../shared/data.js"></script>
+  <script src="../shared/common.js"></script>
+  <script src="scan.js"></script>
+</body>
+</html>

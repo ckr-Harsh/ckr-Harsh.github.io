@@ -1,0 +1,38 @@
+.progress { height: 2px; background: var(--line); }
+.progress span { display: block; height: 100%; width: 0; background: var(--accent); box-shadow: 0 0 12px var(--accent); transition: width .2s linear; }
+.method.done { color: var(--accent); }
+
+.console { background: var(--bg); border-bottom: 1px solid var(--line); font: 12.5px/1.7 var(--mono); }
+.log { padding: 12px 16px 4px; height: 196px; overflow-y: auto; overflow-x: hidden; scrollbar-width: thin; }
+.log div { white-space: pre-wrap; overflow-wrap: anywhere; }
+.log .dim { color: var(--faint); } .log .hl { color: var(--accent); } .log .ok { color: var(--ok); }
+.log .add { color: var(--muted); } .log .add b { color: var(--fg); font-weight: 500; }
+.log .err { color: var(--crit); } .log .cmd { color: var(--fg); } .log .cmd::before { content: "harsh@scan:~$ "; color: var(--accent); }
+.prompt { display: flex; gap: 8px; align-items: center; padding: 4px 16px 12px; }
+.prompt label { color: var(--accent); white-space: nowrap; }
+.prompt input { flex: 1; min-width: 0; background: none; border: 0; color: var(--fg); font: inherit; caret-color: var(--accent); padding: 0; }
+.prompt input:focus { outline: none; }
+.prompt input::placeholder { color: var(--faint); }
+
+.sevbar { display: flex; height: 4px; }
+.sevbar span { transition: flex-grow .4s ease; }
+
+.table { overflow-x: auto; min-width: 0; }
+table { width: 100%; min-width: 520px; border-collapse: collapse; font-size: 14px; }
+th { text-align: left; font: 500 11px var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); padding: 9px 16px; border-bottom: 1px solid var(--line); }
+td { padding: 11px 16px; border-bottom: 1px solid var(--line); vertical-align: top; }
+tr[data-id] { cursor: pointer; }
+tr[data-id]:hover td, tr.sel td { background: var(--soft); }
+tr.sel td:first-child { box-shadow: inset 3px 0 0 var(--accent); }
+tr.new td { animation: found .9s ease; }
+.id { font: 12px var(--mono); color: var(--faint); white-space: nowrap; }
+.type { font: 12px var(--mono); color: var(--muted); }
+.status { font: 12px var(--mono); color: var(--ok); white-space: nowrap; }
+.status.probe { color: var(--warn); }
+.empty td { color: var(--faint); font: 12px var(--mono); text-align: center; padding: 28px 16px; }
+@keyframes found { from { background: rgba(95, 212, 196, .18); } to { background: transparent; } }
+@media (max-width: 600px) {
+  table { min-width: 0; }
+  th:nth-child(3), td:nth-child(3), th:nth-child(5), td:nth-child(5) { display: none; }
+  .log { height: 170px; }
+}
