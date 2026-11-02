@@ -5,7 +5,7 @@ window.PORTFOLIO = (() => {
     NOW,
     START: 2021.17,
     profile: {
-      name: "Harsh Chaudhary",
+      name: "Harsh Choudhary",
       role: "Member of Technical Staff 2",
       company: "AppSentinels",
       location: "Solan, Himachal Pradesh, India",
