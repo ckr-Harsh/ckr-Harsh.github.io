@@ -7,6 +7,8 @@
   const count = t => items.filter(i => i.type === t).length;
   let filter = "All", found = 0, scanning = false, timer;
   let selected = selectedFromHash(items, items[0].id);
+  // Matches the single-column breakpoint in base.css; there the panel sits under the selected row.
+  const panel = $("panel"), panelHome = panel.parentNode, NARROW = matchMedia("(max-width: 860px)");
 
   renderIntro($("intro"), { path: "trace", label: "View as a trace" });
 
@@ -100,7 +102,10 @@
   $("console").addEventListener("click", () => { if (!$("prompt").hidden && !getSelection().toString()) $("cmd").focus({ preventScroll: true }); });
 
   /* ---- table ---- */
-  function select(id) { selected = id; setHash(id); render(); }
+  function select(id) {
+    selected = id; setHash(id); render();
+    if (NARROW.matches) $("rows").querySelector(".sel")?.scrollIntoView({ block: "start", behavior: REDUCE ? "auto" : "smooth" });
+  }
 
   function render(fresh) {
     const visible = items.slice(0, found);
@@ -116,10 +121,11 @@
       : P.profile.stats.map(s => `<span><b>${esc(s.value)}</b> ${esc(s.label)}</span>`).join("");
     if (!rows.length) {
       $("rows").innerHTML = `<tr class="empty"><td colspan="5">${scanning ? "probing…" : "nothing matches this filter"}</td></tr>`;
-      $("panel").innerHTML = `<span class="lbl">waiting for results</span>`;
+      panelHome.append(panel);
+      panel.innerHTML = `<span class="lbl">waiting for results</span>`;
       return;
     }
-    const sel = rows.some(i => i.id === selected) ? selected : rows[0].id;
+    const sel = rows.some(i => i.id === selected) ? selected : rows[0].id, narrow = NARROW.matches;
     $("rows").innerHTML = rows.map(i => `
       <tr data-id="${i.id}" tabindex="0" class="${i.id === sel ? "sel" : ""}${i.id === fresh ? " new" : ""}" aria-selected="${i.id === sel}">
         <td class="id">${i.hid}</td>
@@ -127,12 +133,14 @@
         <td class="type">${esc(i.type)}</td>
         <td><span class="sev ${i.impact}">${IMPACT[i.impact]}</span></td>
         <td class="status${i.id === fresh ? " probe" : ""}">${i.id === fresh ? "probing…" : i.to >= P.NOW ? "● running" : "shipped"}</td>
-      </tr>`).join("");
-    renderPanel($("panel"), byId[sel]);
+      </tr>${narrow && i.id === sel ? `<tr class="detail"><td colspan="5"></td></tr>` : ""}`).join("");
+    (narrow ? $("rows").querySelector(".detail td") : panelHome).append(panel);
+    renderPanel(panel, byId[sel]);
   }
 
   $("filters").addEventListener("click", e => { const b = e.target.closest("[data-f]"); if (b) { filter = b.dataset.f; render(); } });
   onPick($("rows"), select);
+  NARROW.addEventListener("change", () => render());
   addEventListener("hashchange", () => { selected = selectedFromHash(items, selected); render(); });
 
   scan();

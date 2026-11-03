@@ -18,7 +18,7 @@ body {
     radial-gradient(var(--line) 1px, transparent 1px) 0 0 / 22px 22px,
     var(--bg);
   padding: 40px max(16px, env(safe-area-inset-right)) 56px max(16px, env(safe-area-inset-left));
-  min-height: 100vh;
+  min-height: 100vh; -webkit-text-size-adjust: 100%;
 }
 a { color: var(--accent); }
 ::selection { background: rgba(95, 212, 196, .3); }
@@ -77,6 +77,13 @@ a { color: var(--accent); }
 .links { display: flex; gap: 12px; font: 13px var(--mono); flex-wrap: wrap; }
 
 .foot { font: 12px var(--mono); color: var(--faint); display: flex; gap: 16px; flex-wrap: wrap; }
+
+@media (max-width: 600px) {
+  body { padding-top: 24px; }
+  .intro p { font-size: 15.5px; }
+}
+/* ~40px touch targets */
+@media (pointer: coarse) { .chip, .contact button { padding: 10px 12px; } }
 
 @keyframes rise { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
 @keyframes blink { 50% { opacity: .35; } }

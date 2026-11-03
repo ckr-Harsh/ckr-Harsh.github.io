@@ -25,6 +25,8 @@ tr[data-id] { cursor: pointer; }
 tr[data-id]:hover td, tr.sel td { background: var(--soft); }
 tr.sel td:first-child { box-shadow: inset 3px 0 0 var(--accent); }
 tr.new td { animation: found .9s ease; }
+.detail td { padding: 0; }
+.detail .panel { border-top: 0; box-shadow: inset 3px 0 0 var(--accent); }
 .id { font: 12px var(--mono); color: var(--faint); white-space: nowrap; }
 .type { font: 12px var(--mono); color: var(--muted); }
 .status { font: 12px var(--mono); color: var(--ok); white-space: nowrap; }
@@ -36,3 +38,5 @@ tr.new td { animation: found .9s ease; }
   th:nth-child(3), td:nth-child(3), th:nth-child(5), td:nth-child(5) { display: none; }
   .log { height: 170px; }
 }
+/* iOS zooms into inputs under 16px on focus */
+@media (pointer: coarse) { .prompt input { font-size: 16px; } }
