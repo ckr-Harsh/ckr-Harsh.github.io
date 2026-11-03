@@ -81,6 +81,15 @@ a { color: var(--accent); }
 @media (max-width: 600px) {
   body { padding-top: 24px; }
   .intro p { font-size: 15.5px; }
+  .eyebrow { letter-spacing: .06em; }
+  .eyebrow .loc { display: none; }
+  .switch-link { margin-left: 0; }
+  .bar { padding: 12px 14px; }
+  .filters { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; padding: 10px 14px; }
+  .filters .label { display: none; }
+  .chip { flex: none; }
+  .panel { padding: 18px 14px; gap: 12px; }
+  .panel h2 { font-size: 21px; }
 }
 /* ~40px touch targets */
 @media (pointer: coarse) { .chip, .contact button { padding: 10px 12px; } }

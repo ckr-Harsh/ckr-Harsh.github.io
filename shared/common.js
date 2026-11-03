@@ -25,7 +25,7 @@ window.Common = (() => {
   function renderIntro(el, otherView) {
     const p = P.profile;
     el.innerHTML = `
-      <span class="eyebrow">${esc(p.role)} · ${esc(p.company)} · ${esc(p.location)}</span>
+      <span class="eyebrow">${esc(p.role)} · ${esc(p.company)}<span class="loc"> · ${esc(p.location)}</span></span>
       <h1 aria-label="${esc(p.name)}"></h1>
       <p>${esc(p.summary)}</p>
       <div class="contact">

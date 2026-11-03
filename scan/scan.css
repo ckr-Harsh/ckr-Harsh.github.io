@@ -35,8 +35,13 @@ tr.new td { animation: found .9s ease; }
 @keyframes found { from { background: rgba(95, 212, 196, .18); } to { background: transparent; } }
 @media (max-width: 600px) {
   table { min-width: 0; }
-  th:nth-child(3), td:nth-child(3), th:nth-child(5), td:nth-child(5) { display: none; }
-  .log { height: 170px; }
+  th:nth-child(1), td.id, th:nth-child(3), td:nth-child(3), th:nth-child(5), td:nth-child(5) { display: none; }
+  th, td { padding-left: 14px; padding-right: 14px; }
+  tr.sel td:nth-child(2) { box-shadow: inset 3px 0 0 var(--accent); }
+  .log { height: 120px; }
+  .stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; width: 100%; line-height: 1.35; }
+  .stats span { display: flex; flex-direction: column; }
+  .stats b { font-size: 15px; }
 }
 /* iOS zooms into inputs under 16px on focus */
 @media (pointer: coarse) { .prompt input { font-size: 16px; } }
